@@ -45,10 +45,68 @@ if(!task.priority ||!["low","medium","high"].includes(task.priority)){
 }
 return errors;
   };
-  
-if
 
+// filtering with better search functionality//
+export const filterTasks= (tasks,filters) => {
+  if(!Array.isArray(tasks))return[];
+
+  
+  return tasks.filter(task) => {
+    // status filter//
+    const matchesStatus = filter.status === "all" || task priority === filters.priority;;
+
+    // search filter (searches in title and description if exists)//
+    const searchTerm = (filters.search || "").toLowerCase().trim();
+    const matchesSearch = !searchTerm ||
+    task.title.toLowerCase().includes(searchTerm) ||
+    (task.description && task.description.toLowerCase().includes(searchTerms));
+
+    return matchesStatus && matchesSearch && matchesSearch;
+
+  });
+};
+
+// enhanced sorting with a stable sort//
+export const sortTasks = (tasks, sortBy) => {
+  if(!Array.isArray(tasks))return [];
+
+  return[...tasks].sort((a,b) => {
+    switch (sortBy) {
+      case"title":
+      return a.title.localeCompare(b.title);
+      case"dueDate":
+      return new Date(a.dueDate)-new Date(b.dueDate);
+      case"priority": {
+        const priorityOrder = {high: 3, medium: 2, low: 1};
+        const diff = priorityOrder[b.priority] - priorityOrder[a.priority];
+
+        // if priorities are equal, sort by due date as secondary//
+        return diff!==0 ? diff : new Date(a.dueDate) - new Date(b.dueDate);
+      }
+      case"createdAt": 
+      return new Date(a.createdAt) - new Date(b.createdAt);
+      case"status": {
+        const statusOrder = {pending:1, "in-progress":2,completed:3};
+        return statusOrder[a.status] - statusOrder[b.status];
+  }
+  default:
+    return 0;
+}
+  });
+};
+
+// export with error handling//
+export const exportTasks = (tasks) => {
+  try {
+    if(!Array.isArray(tasks) || tasks.length === 0){
+      alert("No tasks toexport");
+      return;
     }
+
+
+  }
+}
+
 function taskUtils() {
   return (
     <>
