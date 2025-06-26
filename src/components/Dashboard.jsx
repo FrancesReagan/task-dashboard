@@ -181,7 +181,38 @@ const handleAddTask = useCallback((taskData) => {
     );
   }
 
-  return
+  return (
+    <div className={`min-h-screen transition-colors duration-200${
+      theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
+    }`}
+    >
+    <div className="container mx-auto px-4 py-6 max-w-4xl">
+      {/* header */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+      <div>
+        <h1 className="text-3xl font-bold">Task Management Dashboard</h1>
+      <p className="text-sm opacity-75 mt-1">Organize and keep track of your tasks</p>
+      </div>
+      <div className="flex flex-wrap gap-2">
+        <button onClick={toggleTheme}
+           className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg
+           transition-colors duration-200 text-sm"
+           >
+            {theme==="light"?"🌙Dark": "☀️Light"}Mode
+           </button>
+           <button onClick={()=>exportTasks(tasks)}
+              disabled={tasks.length===0}
+              className="px-4 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-400
+                         disabled:cursor-not-allowed text white rounded-lg 
+                         transition-colors duration-200 text-sm"
+                         >
+                          📤 Export
+                         </button>
+      </div>
+      </div>
+    </div>
+    </div>
+  )
 
 
 
