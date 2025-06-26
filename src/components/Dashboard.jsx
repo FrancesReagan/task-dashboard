@@ -105,6 +105,19 @@ const handleAddTask = useCallback((taskData) => {
       }
       }
     },[taskToEdit]);
+
+    // toggle task completion status//
+    const handleToggleCompleted = useCallback((id)=>{
+      setTasks(prevTasks => prevTasks.map(task => task.id === id
+        ?{
+          ...task,
+          status:task.status==="completed"?"pending":"completed",
+          completedAt:task.status==="completed"?null:new Date().toISOString()
+        }
+        :task
+      )
+    );
+  },[]);
   
 
 
