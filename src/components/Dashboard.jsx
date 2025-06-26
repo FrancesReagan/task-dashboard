@@ -68,6 +68,46 @@ const toggleTheme = useCallback(() => {
   document.documentElement.classList.toggle("dark");
 },[theme]);
 
+// add or update task//
+const handleAddTask = useCallback((taskData) => {
+  try {
+    if(taskData.id) {
+      // update existing task//
+      setTasks(prevTasks => 
+        prevTasks.map(task => task.id === taskData.id?{...taskData}: task)
+      );
+    }else{
+      // add new task//
+      const newTask = {
+        ...taskData,
+        id:generateId(),
+        status:taskData.status || "pending",
+        createdAt: new Date().toISOString(),
+      };
+      setTasks(prevTasks => [...prevTasks, newTask]);
+      }
+    
+      // clear edit mode//
+      setTaskToEdit(null);
+    }catch(error){
+      console.error("Error adding/updating task:",error);
+      alert("Error saving task. Please try again");
+    }
+  },[]);
+
+  // delete task//
+  const handleDeleteTask = useCallback((id)=>{
+    if(window.confirm("Are you sure you want to delete this task?")){
+      setTasks(prevTasks => prevTasks.filter(task => task.id! === id));
+      // clear edit mode if we're editing the deleted task//
+      if(taskToEdit && taskToEdit.id === id){
+        setTaskToEdit(null);
+      }
+      }
+    },[taskToEdit]);
+  
+
+
 
   
 
