@@ -103,6 +103,40 @@ export const exportTasks = (tasks) => {
       return;
     }
 
+    // create export data with metadata//
+    const exportData={
+      exportDate: new Date().toISOString(),
+      version:"1.0",
+      totalTasks: tasks.length,
+      tasks: tasks,
+    };
+
+    const dataStr = JSON.stringify(exportData, null, 2);
+    const blob = new Blob([dataStr], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `tasks-${new Date().toISOString().split("T")[0]}.json`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    URL.revokeObjectURL(url);
+  }catch(error){
+    alert("Error exporting tasks. Please try again.");
+    console.error("Export error:", error);
+  }
+};
+
+// enchanced import with validation//
+export const importTasks = (file, callback) => {
+  if(!file){
+    alert("Please select a file");
+    return;
+  }
+}
+    
 
   }
 }
