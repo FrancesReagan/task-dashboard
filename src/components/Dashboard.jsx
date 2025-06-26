@@ -142,7 +142,46 @@ const handleAddTask = useCallback((taskData) => {
     });
   },[]);
 
-  // 
+  // handle task import//
+  const handleImportTasks = useCallback((event)=>{
+    const file = event.target.files[0];
+
+    if(file){
+      importTasks(file,(importedTasks) => {
+        // add unique Ids and timestamps to imported tasks//
+        const tasksWithIds = importedTasks.map(task => ({
+          ...task,
+          id: task.id || generatedId(),
+          createdAt:task.createdAt || new Date().toISOString(),
+
+        }));
+
+        if(window.confirm(`${tasksWithIds.length}tasks?
+          This will replace all current tasks.`)){
+            setTasks(tasksWithIds);
+          }
+      });
+    }
+    // clear the file's input//
+    event.target.value="";
+  },[]);
+
+  // cancel edit mode//
+  const handleCancelEdit = useCallback(()=>{
+    setTaskToEdit(null);
+  },[]);
+
+  // memorized the task statistics//
+  const taskStats = useMemo(() => getTaskStats(tasks), [tasks]);
+  if(isLoading){
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-xl">Loading tasks...</div>
+      </div>
+    );
+  }
+
+  return
 
 
 
