@@ -135,18 +135,81 @@ export const importTasks = (file, callback) => {
     alert("Please select a file");
     return;
   }
-}
-    
 
+const reader = new FileReader();
+reader.onload = (e) => {
+try {
+
+  const data = JSON.parse(e.target.result);
+
+  // handle both old format (direct array) and new format(with metadata)
+  const tasks = Array.isArray(data) ? data : data.tasks || [];
+
+  // validate imported tasks//
+  if(!Array.isArray(tasks)){
+    throw new Error("Invalid file format");
   }
-}
 
-function taskUtils() {
-  return (
-    <>
-    
-    </>
-  )
+  // basic validation of task structure//
+  const validTasks = tasks.filter(task =>
+    task &&
+    typeof task === "object" &&
+    task.title &&
+    task.dueDate &&
+    task.priority
+  );
+
+  if(validTasks.length ==== 0){
+    alert("No valid tasks found in the file");
+    return;
+  }
+
+  if(validTasks.length !== tasks.lenth){
+    const skipped = tasks.length - validTasks.length;
+    alert(`Imported ${validTasks.length}tasks.${skipped} invalid tasks were skipped.`);
+   
+  }
+
+ callback(validTasks);
+}catch(error){
+  alert("Invalid file format. Please select a valid tasks JSON file.");
+  console.error("Import error:",error);
 }
+};
+
+reader.onerror = () => {
+  alert("Error reading file. Please try again.");
+};
+
+reader.readAsText(file);
+};
+
+// utility to generate unique ID//
+export const generateId = () => {
+  return Date.now() + Math.random().toString(36).substr(2,9);
+};
+
+// utility to get task statistics//
+export const getTaskStats = (tasks) => {
+  if(!Array.isArray(tasks))return{total:0, completed:0,pending:0,inProgress:0};
+
+  return{
+    total: tasks.length,
+    completed: tasks.filter(t => t.status === "completed").length,
+    pending:tasks.filter(t =>t.status === "pending").length,
+    inProgress:tasks.filter(t => t.status === "in-progress").length,
+    overdue: tasks.filter(t => {
+      const today = new Date();
+      today.setHours(0,0,0,0);
+      return new Date(t.dueDate)<today && t.status!=="completed";
+    }).length,
+  };
+};
+
+
+
+
+
+
 
 export default taskUtils;
