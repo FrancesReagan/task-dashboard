@@ -118,7 +118,31 @@ const handleAddTask = useCallback((taskData) => {
       )
     );
   },[]);
+
+  // handle task edit//
+  const handleEditTask = useCallback((task) => {
+    setTaskToEdit(task);
+  },[]);
   
+  //handle task reorder//
+  const handleReorderTasks=useCallback((reorderedFilteredTasks)=>{
+    setTasks(prevTasks =>{
+      // create a map of reordered tasks by Id for quick lookup//
+      const reorderedMap = new Map();
+      reorderedFilteredTasks.forEach((tassk, index) => {
+        reorderedMap.set(tassk.id,{...task,order:index});
+      });
+    // update the full tasks array, preserving tasks not in the filtered view//
+    return prevTasks.map(task => {
+      if(reorderedMap.has(task.id)){
+        return reorderedMap.get(task.id);
+      }
+      return task;
+    });
+    });
+  },[]);
+
+  // 
 
 
 
