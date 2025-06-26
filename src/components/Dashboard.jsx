@@ -60,6 +60,14 @@ useEffect(() => {
   }
 },[]);
 
+// toggle theme with persistence//
+const toggleTheme = useCallback(() => {
+  const newTheme = theme === "light" ? "dark" : "light";
+  setTheme(newTheme);
+  localStorage.setItem("theme", "newTheme");
+  document.documentElement.classList.toggle("dark");
+},[theme]);
+
 
   
 
