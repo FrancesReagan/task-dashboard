@@ -12,16 +12,25 @@ _DARK-MODE_
 
 _Features_
  -Task Creation - add tasks with title, description, due date, and priority level.
+ 
  -Task Management - mark tasks as complete/incomplete, edit, and/or delete them.
+ 
  -Statistics Dashboard - real-time overview of task progress (future version)
+ 
  -Dark/Light Themes - you can toggle between themes with persistent preferences stored for you.
+ 
  -Local Storage - automatic data persistence across browser sessions.
+ 
  -Export Functionality - download tasks as JSON files
+ 
  -Responsive Design - this application works seamlessly on desktop and mobile
+ 
  -Modern UI - clean, simple, yet professional interface.
 
  _To Use_
- 
+  -Node.js (v16 or higher), npm package
+  _Installation_
+  
 
 
 --------------------------------------------------------------------------------
