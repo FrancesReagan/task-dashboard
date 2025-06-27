@@ -54,8 +54,25 @@ return (
         task.status === "completed" ? "line-through opacity-75":""
       } ${overdue ? "text-red-600 dark:text-red-400":""}`}
       >
-        
-      }
+    {task.title}
+    </h3>
+     {overdue && (
+      <span className="text-xs bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300 px-2 py-1 rounded-full whitespace-nowrap">
+        Overdue
+      </span>
+     )}
+  </div>
+
+  {/* {/* task description */}
+  {task.description && (
+    <p className={`text-sm mb-3 ${
+      isExpanded ? "": "line-clamp-2"
+    }${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}>
+    {task.description}
+    </p>
+)}
+
+     
 
 
 
