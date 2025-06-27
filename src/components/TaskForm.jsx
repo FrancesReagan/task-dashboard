@@ -238,8 +238,31 @@ const handleSubmit = async(e) => {
             <p className="text-red-500 text-sm">{errors.submit}</p>
           )}
           {/* submit buttons */}
-          <div
+          <div className="flex gap-3 pt-2">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={`px-6 py-2 text-white rounded-lg transition-all duration-200 ${
+                isSubmitting ? "bg-gray-400 cursor-not-allowed"
+                : "bg-blue-600 hover:bg-blue-700 hover:shadow-lg"
+              }focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50`}
+              >
+                {isSubmitting ? "Saving...":(isEditing ?"Update Task":"Add Task")}
+            </button>
+
+            {isEditing && (
+              <button
+               type="button"
+               onClick={handleCancel}
+               className="px-6 py-2 border border-gray-300 text-gray-700 rounded-la hover:bg-gray-50 transition-colors duration-200 
+                          focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
+                >
+                 Cancel
+                </button>        
+            )}
+            </div>
           </form>
+          
         </div>
       )
       }
