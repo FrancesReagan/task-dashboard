@@ -16,7 +16,7 @@ function TaskForm({ onAddTask, taskToEdit, onCancel, theme }) {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   
-  //  validation function (replace with imported one if available)//
+  //  validation function//
   const validateTask = (formData) => {
     const errors = {};
     if (!formData.title.trim()) {
