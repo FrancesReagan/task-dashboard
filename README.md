@@ -11,6 +11,7 @@ _LIGHT-MODE_
 <img width="569" alt="image" src="https://github.com/user-attachments/assets/5b40889a-b4d4-48a0-aa86-e8795d1df0ba" />
 _DARK-MODE_
 
+
 _Features_
  -Task Creation - add tasks with title, description, due date, and priority level.
  
@@ -31,6 +32,10 @@ _Features_
  _To Use_
   -Node.js (v16 or higher), npm package
   _Installation_
+   -clone the repo: `git clone https://github.com/FrancesReagan/task-dashboard.git`
+   -cd task-management-dashboard
+   -install dependencies: `npm install, npm create vite@latest,npm install tailwindcss @tailwindcss/vite, Configure the Vite plugin: vite.config.ts: add to top: import tailwindcss from '@tailwindcss/vite'; update the plugins section:
+                           plugins: [react(), tailwindcss()], Add an @import to the top of your CSS file (/src/index.css) that imports Tailwind CSS., @import "tailwindcss";
   
 
 
