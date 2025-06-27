@@ -5,7 +5,7 @@ import TaskFilter from "./TaskFilter";
 import { exportTasks, importTasks, getTaskStats, generateId } from "../utils/taskUtils";
 
 function Dashboard() {
-  // main state
+  // main state//
   const [tasks, setTasks] = useState([]);
   const [filters, setFilters] = useState({
     status: "all",
@@ -18,12 +18,12 @@ function Dashboard() {
   const [taskToEdit, setTaskToEdit] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // load tasks from localStorage on mount
+  // load tasks from localStorage on mount//
   useEffect(() => {
     try {
-      const savedTasks = localStorage.getItem("tasks"); // Fixed: was JSON.parse(savedTasks)
+      const savedTasks = localStorage.getItem("tasks"); 
       if (savedTasks) {
-        const parsedTasks = JSON.parse(savedTasks); // Fixed: variable name
+        const parsedTasks = JSON.parse(savedTasks); 
         if (Array.isArray(parsedTasks)) {
           setTasks(parsedTasks);
         }
@@ -33,13 +33,13 @@ function Dashboard() {
     } finally {
       setIsLoading(false);
     }
-  }, []); // Fixed: missing closing bracket
+  }, []);
 
-  // save tasks to localStorage whenever the tasks change
+  // save tasks to localStorage whenever the tasks change//
   useEffect(() => {
     if (!isLoading) {
       try {
-        localStorage.setItem("tasks", JSON.stringify(tasks)); // Fixed: was "JSON.stringify"(tasks)
+        localStorage.setItem("tasks", JSON.stringify(tasks));
       } catch (error) {
         console.error("Error saving tasks:", error);
         alert("Error saving tasks. Storage might be full.");
@@ -47,7 +47,7 @@ function Dashboard() {
     }
   }, [tasks, isLoading]);
 
-  // load theme from localStorage and apply
+  // load theme from localStorage and apply//
   useEffect(() => {
     try {
       const savedTheme = localStorage.getItem("theme") || "light";
@@ -60,24 +60,24 @@ function Dashboard() {
     }
   }, []);
 
-  // toggle theme with persistence
+  // toggle theme with persistence//
   const toggleTheme = useCallback(() => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
-    localStorage.setItem("theme", newTheme); // Fixed: was "newTheme" (string literal)
+    localStorage.setItem("theme", newTheme); 
     document.documentElement.classList.toggle("dark");
   }, [theme]);
 
-  // add or update task
+  // add or update task//
   const handleAddTask = useCallback((taskData) => {
     try {
       if (taskData.id) {
-        // update existing task
+        // update existing task//
         setTasks(prevTasks => 
           prevTasks.map(task => task.id === taskData.id ? { ...taskData } : task)
         );
       } else {
-        // add new task
+        // add new task//
         const newTask = {
           ...taskData,
           id: generateId(),
@@ -87,7 +87,7 @@ function Dashboard() {
         setTasks(prevTasks => [...prevTasks, newTask]);
       }
       
-      // clear edit mode
+      // clear edit mode//
       setTaskToEdit(null);
     } catch (error) {
       console.error("Error adding/updating task:", error);
@@ -95,18 +95,18 @@ function Dashboard() {
     }
   }, []);
 
-  // delete task
+  // delete task//
   const handleDeleteTask = useCallback((id) => {
     if (window.confirm("Are you sure you want to delete this task?")) {
-      setTasks(prevTasks => prevTasks.filter(task => task.id !== id)); // Fixed: was task.id! === id
-      // clear edit mode if we're editing the deleted task
+      setTasks(prevTasks => prevTasks.filter(task => task.id !== id));
+      // clear edit mode if we're editing the deleted task//
       if (taskToEdit && taskToEdit.id === id) {
         setTaskToEdit(null);
       }
     }
   }, [taskToEdit]);
 
-  // toggle task completion status
+  // toggle task completion status//
   const handleToggleCompleted = useCallback((id) => {
     setTasks(prevTasks => prevTasks.map(task => task.id === id
       ? {
@@ -118,21 +118,21 @@ function Dashboard() {
     ));
   }, []);
 
-  // handle task edit
+  // handle task edit//
   const handleEditTask = useCallback((task) => {
     setTaskToEdit(task);
   }, []);
   
-  // handle task reorder
+  // handle task reorder//
   const handleReorderTasks = useCallback((reorderedFilteredTasks) => {
     setTasks(prevTasks => {
-      // create a map of reordered tasks by Id for quick lookup
+      // create a map of reordered tasks by Id for quick lookup//
       const reorderedMap = new Map();
-      reorderedFilteredTasks.forEach((task, index) => { // Fixed: was tassk and task variables mixed
+      reorderedFilteredTasks.forEach((task, index) => { 
         reorderedMap.set(task.id, { ...task, order: index });
       });
       
-      // update the full tasks array, preserving tasks not in the filtered view
+      // update the full tasks array, preserving tasks not in the filtered view//
       return prevTasks.map(task => {
         if (reorderedMap.has(task.id)) {
           return reorderedMap.get(task.id);
@@ -142,34 +142,34 @@ function Dashboard() {
     });
   }, []);
 
-  // handle task import
+  // handle task import//
   const handleImportTasks = useCallback((event) => {
     const file = event.target.files[0];
 
     if (file) {
       importTasks(file, (importedTasks) => {
-        // add unique Ids and timestamps to imported tasks
+        // add unique Ids and timestamps to imported tasks//
         const tasksWithIds = importedTasks.map(task => ({
           ...task,
-          id: task.id || generateId(), // Fixed: was generatedId()
+          id: task.id || generateId(), 
           createdAt: task.createdAt || new Date().toISOString(),
         }));
 
-        if (window.confirm(`Import ${tasksWithIds.length} tasks? This will replace all current tasks.`)) { // Fixed: template literal
+        if (window.confirm(`Import ${tasksWithIds.length} tasks? This will replace all current tasks.`)) { 
           setTasks(tasksWithIds);
         }
       });
     }
-    // clear the file input
+    // clear the file input//
     event.target.value = "";
   }, []);
 
-  // cancel edit mode
+  // cancel edit mode//
   const handleCancelEdit = useCallback(() => {
     setTaskToEdit(null);
   }, []);
 
-  // memoized task statistics
+  // memoized task statistics//
   const taskStats = useMemo(() => getTaskStats(tasks), [tasks]);
 
   if (isLoading) {
@@ -204,7 +204,7 @@ function Dashboard() {
               disabled={tasks.length === 0}
               className="px-4 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-400
                         disabled:cursor-not-allowed text-white rounded-lg 
-                        transition-colors duration-200 text-sm" // Fixed: was "text white"
+                        transition-colors duration-200 text-sm" 
             >
               📤 Export
             </button>
@@ -214,7 +214,7 @@ function Dashboard() {
                 type="file"
                 accept=".json"
                 onChange={handleImportTasks}
-                className="hidden" // Added: hide the file input
+                className="hidden" 
               />
             </label>
           </div>
@@ -268,7 +268,7 @@ function Dashboard() {
           tasks={tasks}
           filters={filters}
           sortBy={sortBy}
-          onDelete={handleDeleteTask} // Fixed: was onDelete
+          onDelete={handleDeleteTask} 
           onToggleCompleted={handleToggleCompleted}
           onEdit={handleEditTask}
           onReorder={handleReorderTasks}

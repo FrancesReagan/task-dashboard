@@ -57,11 +57,10 @@ const hasNoFilteredTasks = totalFilteredTasks === 0 && !hasNoTasks;
     return (
       <div className={`text-center py-12 rounded-lg ${
         theme === "dark" ? "bg-gray-800 border-gray-700"
-        : "bg-gray-800 border border-gray-700"
         : "bg-white shadow-sm border border-gray-200"
       }`}>
 
-    <div classNaem="text-6xl mb-4">📝</div>
+    <div className="text-6xl mb-4">📝</div>
       <h3 className="text-xl font-medium mb-2">No Tasks Yet</h3>
       <p className="text-gray-500 mb-4">Create your first task to get started.</p>
      </div>

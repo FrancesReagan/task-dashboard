@@ -59,7 +59,7 @@ function TaskFilter({ filters, setFilters, sortBy, setSortBy, theme }) {
             className={`w-full px-3 py-2 border rounded-lg transition-colors duration-200 ${
               theme === "dark" ? "bg-gray-700 border-gray-600 text-white focus:border-blue-500"
                 : "bg-white border-gray-300 text-gray-900 focus:border-blue-500"
-            } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20`} // Fixed: added space
+            } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20`} 
           >
             <option value="all-statuses">All Statuses</option>
             <option value="pending">⏳ Pending</option>
@@ -79,8 +79,8 @@ function TaskFilter({ filters, setFilters, sortBy, setSortBy, theme }) {
             onChange={handleFilterChange}
             className={`w-full px-3 py-2 border rounded-lg transition-colors duration-200 ${
               theme === "dark" ? "bg-gray-700 border-gray-600 text-white focus:border-blue-500"
-                : "bg-white border-gray-300 text-gray-900 focus:border-blue-500" // Fixed: removed space in "focus: border-blue-500"
-            } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20`} // Fixed: added space
+                : "bg-white border-gray-300 text-gray-900 focus:border-blue-500" 
+            } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20`} 
           >
             <option value="all-priorities">All Priorities</option>
             <option value="high">🔴 High Priority</option>
@@ -103,7 +103,7 @@ function TaskFilter({ filters, setFilters, sortBy, setSortBy, theme }) {
             className={`w-full px-3 py-2 border rounded-lg transition-colors duration-200 ${
               theme === "dark" ? "bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500"
                 : "bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-blue-500"
-            } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20`} // Fixed: added space
+            } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20`} 
           />
         </div>
 
@@ -116,9 +116,9 @@ function TaskFilter({ filters, setFilters, sortBy, setSortBy, theme }) {
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
             className={`w-full px-3 py-2 border rounded-lg transition-colors duration-200 ${
-              theme === "dark" ? "bg-gray-700 border-gray-600 text-white focus:border-blue-500" // Fixed: "border-dray-600" → "border-gray-600"
+              theme === "dark" ? "bg-gray-700 border-gray-600 text-white focus:border-blue-500" 
                 : "bg-white border-gray-300 text-gray-900 focus:border-blue-500"
-            } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20`} // Fixed: added space
+            } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20`} 
           >
             <option value="dueDate">📅 Due Date</option>
             <option value="title">🔤 Title (A-Z)</option>
