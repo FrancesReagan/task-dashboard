@@ -156,11 +156,3 @@ const hasNoFilteredTasks = totalFilteredTasks === 0 && !hasNoTasks;
 }
 
 export default TaskList;
-
-
-
-    
-
-
-
-export default TaskList
