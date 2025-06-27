@@ -49,21 +49,41 @@ __Project Structure__
 
 _Built with_
  -React - frontend framework
+ 
  -Vite - Build tool and development server
+ 
  -Tailwind CSS - Utility-first CSS framework
+ 
  -Javascript ES6+ - Programming Language
+
 
 _To Use_
  -Fill in the task form with: 
+ 
   -Title: brief description of task
+  
   -Description: detailed notes about the task
+  
   -Due Date: when the task should be completed by
+  
   -Priority: choose from "Low", "Medium", or "High" priority levels
+  
 -Click `Add Task` to create a new task
+
 
 _Managing Tasks_
  -Complete/Uncomplete: click the check button to toggle task status
+ 
  -Delete: click the trash icon to remove a task
+
+ -View Details: all task information is displayed in the task card
+
+_Dashboard Features_
+ -Statistics: view real-time counts of total, pending, in-progress, completed, and overdue tasks.
+ -Theme Toggle: you can switch between light and dark modes.
+ -Export: you can download all tasks as a JSON file for backup or sharing (as previously stated above)
+
+ 
 
    
   
