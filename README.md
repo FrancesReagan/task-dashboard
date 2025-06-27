@@ -48,11 +48,28 @@ _Challenges_
 
 4.Local Storage Integration:
   -Persisting data across browser sessions: -JSON serialization/deserialization errors, and handling edge cases like corrupted data.
-  _Solution_
+  _Solution_: robust error handling for localStorage operations.
+
+  <img width="336" alt="image" src="https://github.com/user-attachments/assets/6102dc00-72ed-4927-856f-c1c14c6c9a30" />
 
   
+-----------------------
+Composition Strategy:
+ -built reusable components, implemented theme support across all components, used composition over inheritance for flexible UI construction.
+
+State Management:
+ -Centralized architecture:
+ <img width="302" alt="image" src="https://github.com/user-attachments/assets/f1c0efcb-bf9c-4b11-b597-8836e8c86768" /> Core state in dashboard component
+
+  -key patterns: immutable updates--created new state objects for all changes, callback optimization-used `useCallback` for stable event handlers, computed values-used `useMemo` for planning for expansion of app if it needs to 
+                 handle heavy calculations like task statistics, side effects-managed localStorage synching with `useEffect`.
+
+  -data flow: user action -> event handler -> state update -> re-render -> UI update
+
+  --------------------
+
+  This project is a modern React development application that has systematic component design, centralized state management, and performance-conscious implementation. This experience re-enforced for me the importance of 
+  incremental development and testing of each increment, clear component boundaries, and robust error handling in building strong and maintable React applications.
+
   
 
-
-  _Tech_:
-   -performance optimi
