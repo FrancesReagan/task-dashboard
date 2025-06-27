@@ -1,25 +1,30 @@
 {
-  "name": "task-dashboard",
+  "name": "task-management-dashboard",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "description": "A modern task management dashboard built with React, Vite, and Tailwind CSS",
+  "keywords": ["react", "vite", "tailwind", "task-management", "dashboard"],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
-    "@heroicons/react": "^2.2.0",
-    "@tailwindcss/vite": "^4.1.10",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.0.0",
-    "autoprefixer": "^10.4.0",
-    "postcss": "^8.4.0",
-    "tailwindcss": "^3.4.17",
+    "@vitejs/plugin-react": "^4.3.2",
+    "@tailwindcss/vite": "^4.0.0-alpha.30",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.1",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.12",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
     "vite": "^6.3.5"
   }
 }

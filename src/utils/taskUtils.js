@@ -142,7 +142,7 @@ try {
 
   const data = JSON.parse(e.target.result);
 
-  // handle both old format (direct array) and new format(with metadata)
+  // handle both old format (direct array) and new format(with metadata)//
   const tasks = Array.isArray(data) ? data : data.tasks || [];
 
   // validate imported tasks//
@@ -205,11 +205,6 @@ export const getTaskStats = (tasks) => {
     }).length,
   };
 };
-
-
-
-
-
 
 
 export default taskUtils;

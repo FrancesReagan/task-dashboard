@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-// Remove this import if validateTask doesn't exist, or create the function
-// import { validateTask } from '../utils/taskUtils'; 
+
+// import { validateTask } from '../utils/taskUtils'; //
 
 function TaskForm({ onAddTask, taskToEdit, onCancel, theme }) {
-  // form state
+  // form state//
   const [form, setForm] = useState({
     id: null,
     title: "",
@@ -16,7 +16,7 @@ function TaskForm({ onAddTask, taskToEdit, onCancel, theme }) {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   
-  // Simple validation function (replace with imported one if available)
+  //  validation function (replace with imported one if available)//
   const validateTask = (formData) => {
     const errors = {};
     if (!formData.title.trim()) {
@@ -31,7 +31,7 @@ function TaskForm({ onAddTask, taskToEdit, onCancel, theme }) {
     return errors;
   };
 
-  // reset form to default state
+  // reset form to default state//
   const resetForm = () => {
     setForm({
       id: null,
@@ -44,32 +44,32 @@ function TaskForm({ onAddTask, taskToEdit, onCancel, theme }) {
     setErrors({});
   };
 
-  // load task for editing or reset form when taskToEdit changes
+  // load task for editing or reset form when taskToEdit changes//
   useEffect(() => {
     if (taskToEdit) {
       setForm({
         ...taskToEdit,
-        // ensure date is in correct format for input
+        // ensure date is in correct format for input//
         dueDate: taskToEdit.dueDate ? taskToEdit.dueDate.split("T")[0] : "",
       });
       setErrors({});
     } else {
       resetForm();
     }
-  }, [taskToEdit]); // Fixed: removed extra parentheses and comma
+  }, [taskToEdit]); 
 
-  // handle input changes
+  // handle input changes//
   const handleChange = (event) => {
     const { name, value } = event.target;
     setForm(prev => ({ ...prev, [name]: value }));
     
-    // clear a specific error when the user starts typing
+    // clear an error when the user starts typing//
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: "" }));
     }
-  }; // Fixed: moved this logic inside the function
+  }; 
 
-  // handle form submission
+  // handle form submission//
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -77,15 +77,15 @@ function TaskForm({ onAddTask, taskToEdit, onCancel, theme }) {
     setIsSubmitting(true);
 
     try {
-      // validate the form
+      // validate the form//
       const validationErrors = validateTask(form);
       if (Object.keys(validationErrors).length > 0) {
         setErrors(validationErrors);
         return;
       }
     
-      // prepare task data
-      const taskData = { // Fixed: was "cont" instead of "const"
+      // prepare task data//
+      const taskData = { 
         ...form,
         title: form.title.trim(),
         description: form.description?.trim() || "",
@@ -93,22 +93,22 @@ function TaskForm({ onAddTask, taskToEdit, onCancel, theme }) {
         dueDate: new Date(form.dueDate).toISOString(),
       };
 
-      // submit the task
+      // submit the task//
       onAddTask(taskData);
 
-      // reset the form only if not editing
+      // reset the form only if not editing//
       if (!form.id) {
         resetForm();
       }
-    } catch (error) { // Fixed: moved catch to proper location
-      console.error("Error submitting form:", error); // Fixed: removed extra quote
+    } catch (error) { 
+      console.error("Error submitting form:", error); 
       setErrors({ submit: "Error saving task. Please try again." });
     } finally {
       setIsSubmitting(false);
     }
-  }; // Fixed: added missing closing brace and semicolon
+  }; 
 
-  // handle cancel
+  // handle cancel//
   const handleCancel = () => {
     resetForm();
     if (onCancel) onCancel();
@@ -155,7 +155,7 @@ function TaskForm({ onAddTask, taskToEdit, onCancel, theme }) {
                 : "bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-blue-500"
             } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20 ${
               errors.title ? "border-red-500" : ""
-            }`} // Fixed: removed extra space in "focus: outline-none"
+            }`} 
             maxLength={100}
           />
           {errors.title && (
@@ -178,14 +178,14 @@ function TaskForm({ onAddTask, taskToEdit, onCancel, theme }) {
               theme === "dark" 
                 ? "bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500"
                 : "bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-blue-500"
-            } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20`} // Fixed: added space after }
+            } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20`}
             maxLength={500}
           />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {/* due date */}
-          <div> {/* Fixed: wrapped in div */}
+          <div> 
             <label className="block text-sm font-medium mb-1">
               Due Date*
             </label>
@@ -201,7 +201,7 @@ function TaskForm({ onAddTask, taskToEdit, onCancel, theme }) {
                   : "bg-white border-gray-300 text-gray-900 focus:border-blue-500"
               } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20 ${
                 errors.dueDate ? "border-red-500" : ""
-              }`} // Fixed: added space after }
+              }`}
             />
             {errors.dueDate && (
               <p className="text-red-500 text-sm mt-1">{errors.dueDate}</p>
@@ -223,7 +223,7 @@ function TaskForm({ onAddTask, taskToEdit, onCancel, theme }) {
                   : "bg-white border-gray-300 text-gray-900 focus:border-blue-500"
               } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20 ${
                 errors.priority ? "border-red-500" : ""
-              }`} // Fixed: added space after }
+              }`}
             >
               <option value="">Select Priority</option>
               <option value="low">🟢 Low</option>
@@ -248,7 +248,7 @@ function TaskForm({ onAddTask, taskToEdit, onCancel, theme }) {
                 theme === "dark" 
                   ? "bg-gray-700 border-gray-600 text-white focus:border-blue-500"
                   : "bg-white border-gray-300 text-gray-900 focus:border-blue-500"
-              } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20`} // Fixed: added space after }
+              } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20`}
             >
               <option value="pending">⏳ Pending</option>
               <option value="in-progress">🔄 In Progress</option>
@@ -271,7 +271,7 @@ function TaskForm({ onAddTask, taskToEdit, onCancel, theme }) {
               isSubmitting 
                 ? "bg-gray-400 cursor-not-allowed"
                 : "bg-blue-600 hover:bg-blue-700 hover:shadow-lg"
-            } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50`} // Fixed: added space after }
+            } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50`}
           >
             {isSubmitting ? "Saving..." : (isEditing ? "Update Task" : "Add Task")}
           </button>
@@ -281,7 +281,7 @@ function TaskForm({ onAddTask, taskToEdit, onCancel, theme }) {
               type="button"
               onClick={handleCancel}
               className="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200 
-                        focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50" // Fixed: "rounded-la" to "rounded-lg"
+                        focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
             >
               Cancel
             </button>        

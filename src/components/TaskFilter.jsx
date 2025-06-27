@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 
 function TaskFilter({ filters, setFilters, sortBy, setSortBy, theme }) {
-  // handle filter changes
+  // handle filter changes//
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
     setFilters(prev => ({
@@ -10,19 +10,19 @@ function TaskFilter({ filters, setFilters, sortBy, setSortBy, theme }) {
     }));
   };
 
-  // handle the search with the debouncing effect
+  // handle the search with the debouncing effect//
   const handleSearchChange = (e) => {
     const { value } = e.target;
     setFilters(prev => ({ ...prev, search: value }));
   };
 
-  // clear all filters
+  // clear all filters//
   const clearFilters = () => {
     setFilters({ status: "all", priority: "all", search: "" });
     setSortBy("dueDate");
   };
 
-  // check if any filters are active
+  // check if any filters are active//
   const hasActiveFilters = useMemo(() => {
     return filters.status !== "all" ||
       filters.priority !== "all" ||
@@ -107,7 +107,7 @@ function TaskFilter({ filters, setFilters, sortBy, setSortBy, theme }) {
           />
         </div>
 
-        {/* sort */} {/* Fixed: was {sort} */}
+        {/* sort */} 
         <div>
           <label className="block text-sm font-medium mb-1">
             Sort Tasks By
