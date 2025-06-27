@@ -143,7 +143,44 @@ const handleSubmit = async(e) => {
                 <p className="text-red-500 text-sm mt-1">{errors.title}</p>
               )}
           </div>
-
+        {/* description */}
+        <div>
+          <label className="block text-sm font-medium mb-1">
+            Description
+         </label>
+          <textarea
+            name="description"
+            value={form.description}
+            onChange={handleChange}
+            placeholder="Add task description or notes..."
+            rows={3}
+            className={`w-full px-3 py-2 border rounded-lg transition-colors duration-200 resize-vertical ${
+              theme === "dark"? "bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500"
+              : "bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-blue-500"
+            }focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20`}
+            maxLength={500}
+              />
+              </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {/* due date */}
+              <label className="block text-sm font-medium mb-1">
+                Due Date*
+              </label>
+              <input
+                type="date"
+                name="dueDate"
+                value={form.dueDate}
+                onChange={handleChange}
+                min={new Date().toISOString().split("T")[0]}
+                className={`w-full px-3 py-2 border rounded-lg transition-colors duration-200 ${
+                  theme === "dark"
+                  ? "bg-gray-700 border-gray-600 text-white focus:border-blue-500"
+                  : "bg-white border-gray-300 text-gray-900 focus:border-blue-500"
+                }focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20 ${
+                  errors.dueDate ? "border-red-500" : ""
+                }`}
+                />
+            </div>
           </form>
         </div>
       )
