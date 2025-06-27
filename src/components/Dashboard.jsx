@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
-import TaskList from "./components/TaskList";
-import TaskForm from "./components/TaskForm";
+import TaskList from "./TaskList";
+import TaskForm from "./TaskForm";
 import TaskFilter from "./TaskFilter";
 import { exportTasks, importTasks, getTaskStats, generateId } from "../utils/taskUtils";
 
