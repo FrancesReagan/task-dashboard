@@ -31,12 +31,41 @@ _Features_
 
  _To Use_
   -Node.js (v16 or higher), npm package
+  
   _Installation_
+  
    -clone the repo: `git clone https://github.com/FrancesReagan/task-dashboard.git`
+   
    -cd task-management-dashboard
-   -install dependencies: `npm install`,`npm install tailwindcss @tailwindcss/vite`, Configure the Vite plugin: vite.config.ts: add to top: `import tailwindcss from '@tailwindcss/vite'`; update the plugins      
+   
+   -install dependencies: `npm install`,`npm install tailwindcss @tailwindcss/vite`, Configure the Vite plugin: vite.config.ts: add to top: `import tailwindcss from '@tailwindcss/vite'`; update the plugins  
+   
                          section: plugins: [react(), tailwindcss()], Add an @import to the top of your CSS file (/src/index.css) that imports Tailwind CSS., `@import "tailwindcss"`;
+                         
    -Start the development server: `npm run dev`; open browser with ctlr Click on link or go to `http://localhost:5173` to view the application.
+
+__Project Structure__
+<img width="144" alt="image" src="https://github.com/user-attachments/assets/c1c8bf7a-a3cc-4754-99c4-bc4f95c46a04" />
+
+_Built with_
+ -React - frontend framework
+ -Vite - Build tool and development server
+ -Tailwind CSS - Utility-first CSS framework
+ -Javascript ES6+ - Programming Language
+
+_To Use_
+ -Fill in the task form with: 
+  -Title: brief description of task
+  -Description: detailed notes about the task
+  -Due Date: when the task should be completed by
+  -Priority: choose from "Low", "Medium", or "High" priority levels
+-Click `Add Task` to create a new task
+
+_Managing Tasks_
+ -Complete/Uncomplete: click the check button to toggle task status
+ -Delete: click the trash icon to remove a task
+
+   
   
    
 
