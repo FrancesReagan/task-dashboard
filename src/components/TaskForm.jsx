@@ -207,7 +207,32 @@ const handleSubmit = async(e) => {
                <option value="medium">🟡 Medium</option>
                <option value="high">🔴 High</option>
               </select>
+              {errors.priority && (
+                <p className="text-red-500 text-sm mt-1">{errors.priority}</p>
+              )}
             </div>
+
+            {/* status */}
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                Status
+              </label>
+              <select 
+                name="status"
+                value={form.status}
+                onChange={handleChange}
+                className={`w-full px-3 py-2 border rounded-lg transition-colors duration-200 ${
+                  theme === "dark" ? "bg-gray-700 border-gray-600 text-white focus:border-blue-500"
+                  : "bg-white border-gray-300 text-gray-900 focus:border-blue-500"
+                }focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20`}
+                >
+                  <option value="pending">⏳Pending</option>
+                  <option value="in-progress">🔄 In Progress</option>
+                  <option value="completed">✅ Completed</option>
+                </select>
+            </div>
+            </div>
+            
           </form>
         </div>
       )
