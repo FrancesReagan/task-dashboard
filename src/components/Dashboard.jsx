@@ -243,9 +243,26 @@ const handleAddTask = useCallback((taskData) => {
           <div className="text-sm opacity-75">Overdue</div>
         </div>
       </div>
-  )
+ 
+     {/* task form */}
 
+  <TaskForm
+    onAddTask={handleAddTask}
+    taskToEdit={taskToEdit}
+    onCancel={handleCancelEdit}
+    theme={theme}
+    />
 
+    {/* filters */}
+    <TaskFilter
+      filters={filters}
+      setFilters={setFilters}
+      sortBy={sortBy}
+      setSortBy={setSortBy}
+      theme={theme}
+      />
+
+      
 
   
 
