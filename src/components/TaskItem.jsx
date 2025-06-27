@@ -25,8 +25,48 @@ function TaskItem({task, onDelete, toggleCompleted,onEdit,theme}) {
 
     return styles[status] || styles.pending;
   };
+// check if task is overdue//
+const isOverdue =() => {
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const dueDate = new Date(task.dueDate);
+  return dueDate < today && task.status!=="completed";
+};
 
-  
+const priority Style = getPriorityStyle(task.priority);
+const statusStyle = getStatusStyle(task.status);
+const overdue = isOverdue();
+
+return (
+  <div className={`group border rounded-lg transition-all duration-200 hover: shadow-md ${
+    theme === "dark" ? "bg-gray-700 border-gray-600 hover:border-gray-500"
+    : "bg-gray-50 border-gray-200 hover:border-gray-300"
+  }${overdue ? "border-l-4 border-l-red-500": ""} ${
+    task.status === "completed" ? "opacity-75" : ""
+  }`}
+  >
+  <div className="p-4">
+  <div className="flex items-start justify-between gap-3">
+  {/* {/* main content */}
+  <div className="flex-1 min-w-0">
+    <div className="flex items-start gap-2 mb-2">
+      <h3 className={`font-medium text-lg leading-tight ${
+        task.status === "completed" ? "line-through opacity-75":""
+      } ${overdue ? "text-red-600 dark:text-red-400":""}`}
+      >
+        
+      }
+
+
+
+
+  }
+)
+
+
+
+}
+
 
   }
 //   return (
