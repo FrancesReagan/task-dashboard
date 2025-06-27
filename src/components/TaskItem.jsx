@@ -33,7 +33,7 @@ const isOverdue =() => {
   return dueDate < today && task.status!=="completed";
 };
 
-const priority Style = getPriorityStyle(task.priority);
+const priorityStyle = getPriorityStyle(task.priority);
 const statusStyle = getStatusStyle(task.status);
 const overdue = isOverdue();
 
