@@ -101,7 +101,7 @@ const handleSubmit = async(e) => {
       const isEditing = Boolean(taskToEdit && taskToEdit.id);
 
       return(
-        <div className={`mb-6 p-6 rounded-lg transition-colors duration-200 ${theme === "dark"
+      <div className={`mb-6 p-6 rounded-lg transition-colors duration-200 ${theme === "dark"
           ? "bg-gray-800 border border-gray-700"
           : "bg-white shadow-sm border border-gray-200"
         }`}>     
@@ -116,9 +116,35 @@ const handleSubmit = async(e) => {
               ✕ CANCEL
              </button>
           )}
+      </div>
 
-          
-        </div>
+          <form onSubmit={handleSubmit} className="space-y-4">
+          {/* title */}
+          <div>
+            <label className="block text-sm font-medium mb-1">
+              Task Title*
+            </label>
+            <input 
+              type="text"
+              name="title"
+              value={form.title}
+              onChange={handleChange}
+              placeholder="Enter task title(e.g. 'Complete all Mod9 and Mod10 labs and SBAs')"
+              className={`w-full px-3 py-2 border rounded-lg transition-colors duration-200 ${
+                theme === "dark" ?"bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500" 
+                : "bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-blue-500"
+              } focus: outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20 ${
+                errors.title ? "border-red-500" : ""
+              }`}
+
+              maxLength={100}
+              />
+              {errors.title && (
+                <p className="text-red-500 text-sm mt-1">{errors.title}</p>
+              )}
+          </div>
+
+          </form>
         </div>
       )
       }
