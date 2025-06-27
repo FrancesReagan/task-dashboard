@@ -202,8 +202,11 @@ const handleSubmit = async(e) => {
                   errors.priority ? "border-red-500" : ""
                 }`}
                 >
-                  
-                </select>
+               <option value="">Select Priority</option>
+               <option value="low">🟢 Low</option>
+               <option value="medium">🟡 Medium</option>
+               <option value="high">🔴 High</option>
+              </select>
             </div>
           </form>
         </div>
