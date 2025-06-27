@@ -180,6 +180,30 @@ const handleSubmit = async(e) => {
                   errors.dueDate ? "border-red-500" : ""
                 }`}
                 />
+                {errors.dueDate && (
+                  <p className="text-red-500 text-sm mt-1">{errors.dueDate}</p>
+                )}
+            </div>
+
+            {/* priority */}
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                Priority*
+              </label>
+              <select
+                name="priority"
+                value={form.priority}
+                onChange={handleChange}
+                className={`w-full px-3 py-2 border rounded-lg transition-colors duration-200 ${
+                  theme === "dark"
+                  ?"bg-gray-700 border-gray-600 text-white focus:border-blue-500"
+                  : "bg-white border-gray-300 text-gray-900 focus:border-blue-500"
+                }focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20 ${
+                  errors.priority ? "border-red-500" : ""
+                }`}
+                >
+                  
+                </select>
             </div>
           </form>
         </div>
