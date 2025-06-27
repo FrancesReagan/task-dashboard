@@ -6,7 +6,7 @@ function TaskFilter({ filters, setFilters, sortBy, setSortBy, theme }) {
     const { name, value } = e.target;
     setFilters(prev => ({
       ...prev,
-      [name]: value === "all-statuses" || value === "all-priorities" ? "all" : value, // Fixed typo: "all-statues" → "all-statuses"
+      [name]: value === "all-statuses" || value === "all-priorities" ? "all" : value,
     }));
   };
 
