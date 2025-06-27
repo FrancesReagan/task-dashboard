@@ -252,7 +252,6 @@ const handleAddTask = useCallback((taskData) => {
     onCancel={handleCancelEdit}
     theme={theme}
     />
-
     {/* filters */}
     <TaskFilter
       filters={filters}
@@ -262,7 +261,21 @@ const handleAddTask = useCallback((taskData) => {
       theme={theme}
       />
 
-      
+
+      {/* task list */}
+      <TaskList
+        tasks={tasks}
+        filters={filters}
+        sortBy={sortBy}
+        onDelete={onDelete}
+        onToggleCompleted={handleToggleCompleted}
+        onEdit={handleEditTask}
+        onReorder={handleReorderTasks}
+        theme={theme}
+        />
+        </div>
+
+
 
   
 
