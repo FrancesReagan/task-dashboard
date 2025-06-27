@@ -103,6 +103,61 @@ const hasNoFilteredTasks = totalFilteredTasks === 0 && !hasNoTasks;
   </div>
 
   <div className="p-4"
+  // shows all tasks in a single list if they are not grouped by status//
+  {filter.status!=="all"? (
+    <div className="space-y-3">
+      {filteredAndSortedTasks.map((task) => (
+        <TaskItem
+        key={task.id}
+        task={task}
+        onDelete={onDelete}
+        onToggleCompleted={onToggleCompleted}
+        onEdit={onEdit}
+        theme={theme}
+        />
+      ))}
+      </div>
+  ) : (
+    // group by status when showing all//
+    <div className="space-y-6">
+      {Object.entries(groupedTasks).map(([status,statusTasks]) => {
+        if(statusTasks.length===0)return null;
+
+        const statusLabels = {
+          pending: "⏳Pending",
+          "in-progress": "🔄 In Progress",
+          completed: "✅ Completed"
+        };
+      return (
+        <div key={status}>
+          <h4 className="font-medium text-sm uppercase tracking-wide opacity-75 mb-3">
+            {statusLabels[status]}({statusTasks.length})
+            </h4>
+            <div className="space-y-3">
+              {statusTasks.map((task) => (
+                <TaskItem
+                  key={task.id}
+                  task={task}
+                  onDelete={onDelete}
+                  onToggleCompleted={onToggleCompleted} 
+                  onEdit={onEdit}
+                  theme={theme}
+                  />
+              ))}
+            </div>
+          </div>
+         );
+
+       })}
+     </div>
+     )}
+    </div>
+   </div>
+);
+}
+
+export default TaskList;
+
 
 
     
