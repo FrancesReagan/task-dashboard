@@ -101,9 +101,9 @@ const hasNoFilteredTasks = totalFilteredTasks === 0 && !hasNoTasks;
     </div>
   </div>
 
-  <div className="p-4"
-  // shows all tasks in a single list if they are not grouped by status//
-  {filter.status!=="all"? (
+  <div className="p-4">
+
+ {filters.status !== "all" ? (
     <div className="space-y-3">
       {filteredAndSortedTasks.map((task) => (
         <TaskItem
