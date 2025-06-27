@@ -2,12 +2,9 @@
 
 
 
-___TASK MANAGEMENT DASHBOARD__
-_A modern, responsive task management application built 
-
-with React and Tailwind CSS. You can create, organize, and track your tasks with a 
-
-beautiful and simply intuitive interface._
+__TASK MANAGEMENT DASHBOARD__
+-------------------------------------------
+  -A modern, responsive task management application built with React and Tailwind CSS. You can create, organize, and track your tasks with a beautiful and simply intuitive interface._
 <img width="609" alt="image" src="https://github.com/user-attachments/assets/0e7a72d7-cb99-41b7-b447-3537549ff16e" />
 _LIGHT-MODE_
 <img width="569" alt="image" src="https://github.com/user-attachments/assets/5b40889a-b4d4-48a0-aa86-e8795d1df0ba" />
