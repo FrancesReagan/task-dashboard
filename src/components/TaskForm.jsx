@@ -232,7 +232,13 @@ const handleSubmit = async(e) => {
                 </select>
             </div>
             </div>
-            
+          
+          {/* submit error */}
+          {errors.submit && (
+            <p className="text-red-500 text-sm">{errors.submit}</p>
+          )}
+          {/* submit buttons */}
+          <div
           </form>
         </div>
       )
