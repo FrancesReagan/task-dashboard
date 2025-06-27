@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { validateTask } from './utils/taskUtils'; 
+import { validateTask } from '../utils/taskUtils'; 
 import { use } from 'react';
 
 function TaskForm({onAddTask, taskToEdit, onCancel, theme}) {
