@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { validateTask } from './utils/taskUtils'; 
+import { use } from 'react';
 
 function TaskForm({onAddTask, taskToEdit, onCancel, theme}) {
   // form state//
@@ -27,7 +28,33 @@ function TaskForm({onAddTask, taskToEdit, onCancel, theme}) {
     });
     setErrors({});
   };
-  
+
+  // load task for editing or reset form when taskToEdit changes//
+  useEffect(() => {
+    if (taskToEdit) {
+      setForm({
+        ...taskToEdit,
+        // ensure date is in correct format for input//
+        dueDate:taskToEdit.dueDate?taskToEdit.dueDate.split("T")[0]:"",
+      });
+      setErrors({});
+    }else{
+      resetForm();
+    }
+  },([taskToEdit,]);
+
+//  handle input changes//
+const handleChange = (event) => {
+  const { name, value } = event.target;
+  setForm(prev =>({...prev,[name]:value}));
+
+  // clear a specific error when the user starts typing//
+  if(errors[name]){
+    setErrors(prev=>({...prev,[name]:""}));
+  }
+};
+
+
 
   console.log("form", form);
   console.log("form.title", form.title);
