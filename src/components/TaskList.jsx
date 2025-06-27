@@ -60,6 +60,51 @@ const hasNoFilteredTasks = totalFilteredTasks === 0 && !hasNoTasks;
         : "bg-gray-800 border border-gray-700"
         : "bg-white shadow-sm border border-gray-200"
       }`}>
+
+    <div classNaem="text-6xl mb-4">📝</div>
+      <h3 className="text-xl font-medium mb-2">No Tasks Yet</h3>
+      <p className="text-gray-500 mb-4">Create your first task to get started.</p>
+     </div>
+    );
+  }
+
+  if (hasNoFilteredTasks) {
+    return (
+      <div className={`text-center py-12 rounded-lg ${
+        theme === "dark" ? "bg-gray-800 border border-gray-700"
+        : "bg-white shadow-sm border border-gray-200"
+      }`}>
+    
+    <div className="text-6xl mb-4">🔍</div>
+     <h3 className="text-xl font-medium mb-2">No Tasks Found</h3>
+      <p className="text-gray-500 mb-4">
+         Try adjusting your filters or search criteria.
+      </p>
+    </div>
+    );
+  }
+  return (
+    <div className={`rounded-lg transition-colors duration-200 ${
+      theme === "dark" ? "bg-gray-800 border border-gray-700"
+      : "bg-white shadow-sm border border-gray-200"
+    }`}>
+
+      <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+        <div className="flex justify-between items-center">
+          <h3 className="text-lg font-medium">
+            Tasks({totalFilteredTasks})
+          </h3>
+        <div className="text-sm opacity-75">
+          {tasks.length!==totalFilteredTasks && (
+            <span>Showing{totalFilteredTasks} of {tasks.length}</span>
+          )}
+      </div>
+    </div>
+  </div>
+
+  <div className="p-4"
+
+
     
 
 
