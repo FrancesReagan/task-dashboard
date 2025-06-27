@@ -10,7 +10,7 @@ function TaskItem({task, onDelete, toggleCompleted,onEdit,theme}) {
     const styles ={
       high:{color:"text-red-600", bg:"bg-red-50 dark:bg-red-900/20", icon:"🔴"},
       medium:{color:"text-yellow-600", bg: "bg-yellow-50 dark:bg-yellow-900/20", icon:"🟡"},
-      <low:>color:"text-green-600", bg:"bg-green-50 dark:bg-green-900/20", icon:"🟢"</low:>
+     low: {color:"text-green-600", bg:"bg-green-50 dark:bg-green-900/20", icon:"🟢"},
     };
     return styles[priority] || styles.medium;
   };
