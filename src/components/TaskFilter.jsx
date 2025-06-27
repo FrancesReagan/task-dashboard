@@ -88,43 +88,46 @@ return(
       </select>
     </div>
 
-
-
-// function TaskFilter({ onFilterChange }) {
-//   const [status, setStatus] = useState("all-statuses");
-//   const [priority, setPriority] = useState("all-priorities");
-
-//   useEffect(() => {
-//     onFilterChange({
-//       status: status === "all-statuses" ? undefined : status,
-//       priority: priority === "all-priorities" ? undefined : priority,
-//     });
-//   }, [status, priority, onFilterChange]);
-
-//   const handleStatusChange = (e) => {
-//     setStatus(e.target.value);
-//   };
-
-//   const handlePriorityChange = (e) => {
-//     setPriority(e.target.value);
-//   };
-
-//   return (
-//     <div className="flex justify-center mb-4 gap-4">
-//       <select value={status} onChange={handleStatusChange}>
-//         <option value="all-statuses">All Statuses</option>
-//         <option value="pending">Pending</option>
-//         <option value="in-progress">In Progress</option>
-//         <option value="completed">Completed</option>
-//       </select>
-//       <select value={priority} onChange={handlePriorityChange}>
-//         <option value="all-priorities">All Priorities</option>
-//         <option value="high">High</option>
-//         <option value="medium">Medium</option>
-//         <option value="low">Low</option>
-//       </select>
-//     </div>
-//   );
-// }
-
+    {/* search */}
+    <div>
+      <label className="block text-sm font-medium mb-1">
+        Search Tasks
+      </label>
+      <input 
+        type="text"
+        name="search"
+        value={filters.search}
+        onChange={handleSearchChange}
+        placeholder="Search by title..."
+        className={`w-full px-3 py-2 border rounded-lg transition-colors duration-200 ${
+          theme === "dark" ? "bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500"
+          : "bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-blue-500"
+        }focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20`}
+        />
+       </div>
+       {sort}
+       <div>
+        <label className="block text-sm font-medium mb-1">
+          Sort Tasks By
+        </label>
+        <select
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+          className={`w-full px-3 py-2 border rounded-lg transition-colors duration-200 ${
+            theme === "dark" ? "bg-gray-700 border-dray-600 text-white focus:border-blue-500"
+            : "bg-white border-gray-300 text-gray-900 focus:border-blue-500"
+           }focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20`}
+           >
+            <option value="dueDate">📅Due Date</option>
+            <option value = "title">🔤 Title(A/Z)</option>
+            <option value="priority">⚡Priority</option>
+            <option value="status">📊Status</option>
+            <option value="createdAt">🕒 Created Date </option>
+        </select>
+      </div>
+    </div>
+  </div>
+);
+}
+        
 export default TaskFilter;
