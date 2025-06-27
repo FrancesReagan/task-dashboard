@@ -105,7 +105,20 @@ const handleSubmit = async(e) => {
           ? "bg-gray-800 border border-gray-700"
           : "bg-white shadow-sm border border-gray-200"
         }`}>     
-        
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-xl font-semibold">
+            {isEditing? "Edit Task" : "Add New Task"}
+          </h2>
+          {isEditing && (
+            <button type="button" onClick={handleCancel} 
+             className="text-gray-500 hover:text-gray-700 transition-colors"
+             >
+              ✕ CANCEL
+             </button>
+          )}
+
+          
+        </div>
         </div>
       )
       }
