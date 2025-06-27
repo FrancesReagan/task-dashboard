@@ -55,7 +55,7 @@ function TaskFilter({ filters, setFilters, sortBy, setSortBy, theme }) {
           <select
             name="status"
             value={filters.status === "all" ? "all-statuses" : filters.status} 
-            onChange={handleFilterChange} // Fixed: was handleSearchChange
+            onChange={handleFilterChange}
             className={`w-full px-3 py-2 border rounded-lg transition-colors duration-200 ${
               theme === "dark" ? "bg-gray-700 border-gray-600 text-white focus:border-blue-500"
                 : "bg-white border-gray-300 text-gray-900 focus:border-blue-500"
