@@ -1,8 +1,5 @@
 @import "tailwindcss";
-/* import tailwind CSS styles */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 
 /* Global reset and base styles*/
 *{
