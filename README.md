@@ -78,9 +78,12 @@ _Managing Tasks_
 
  -View Details: all task information is displayed in the task card
 
+
 _Dashboard Features_
  -Statistics: view real-time counts of total, pending, in-progress, completed, and overdue tasks.
+ 
  -Theme Toggle: you can switch between light and dark modes.
+ 
  -Export: you can download all tasks as a JSON file for backup or sharing (as previously stated above)
 
  
