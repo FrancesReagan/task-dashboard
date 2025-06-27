@@ -1,12 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { validateTask } from './utils/taskUtils'; 
 
-function TaskForm({onAddTask}) {
+function TaskForm({onAddTask, taskToEdit, onCancel, theme}) {
+  // form state//
   const [form, setForm] = useState({
+    id: null,
     title: "",
-    priority: "medium",
+    description: "",
     dueDate: "",
-    status: "",
-  })
+    priority: "medium",
+    status: "pending",
+  });
+
+  const [errors, setErrors] = useState({});
+  const [isSubmitting,setIsSubmitting] = useState(false);
+  
+  // reset form to default state//
+  const resetForm = () => {
+    setForm({
+      id: null,
+      title:"",
+      description:"",
+      dueDate: "",
+      priority:"medium",
+      status: "pending",
+    });
+    setErrors({});
+  };
+  
 
   console.log("form", form);
   console.log("form.title", form.title);
