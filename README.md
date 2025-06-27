@@ -34,10 +34,11 @@ _Features_
   _Installation_
    -clone the repo: `git clone https://github.com/FrancesReagan/task-dashboard.git`
    -cd task-management-dashboard
-   -install dependencies: `npm install`, `npm create vite@latest`,`npm install tailwindcss @tailwindcss/vite`, Configure the Vite plugin: vite.config.ts: add to top: `import tailwindcss from '@tailwindcss/vite'`; update the plugins      
+   -install dependencies: `npm install`,`npm install tailwindcss @tailwindcss/vite`, Configure the Vite plugin: vite.config.ts: add to top: `import tailwindcss from '@tailwindcss/vite'`; update the plugins      
                          section: plugins: [react(), tailwindcss()], Add an @import to the top of your CSS file (/src/index.css) that imports Tailwind CSS., `@import "tailwindcss"`;
+   -Start the development server: `npm run dev`; open browser with ctlr Click on link or go to `http://localhost:5173` to view the application.
   
-
+   
 
 --------------------------------------------------------------------------------
 
