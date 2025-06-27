@@ -6,12 +6,12 @@ function App() {
  
 
   return (
-    <>
-      <h1>Task Dashboard</h1>
+    
+      <div className="App">
       <Dashboard />
-      
-    </>
+      </div>
+  
   );
 }
 
-export default App
+export default App;

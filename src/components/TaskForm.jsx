@@ -54,14 +54,7 @@ const handleChange = (event) => {
   }
 };
 
-
-
-  console.log("form", form);
-  console.log("form.title", form.title);
-  function handleChange(event) {
-    const {name, value} = event.target
-    setForm((prev) => ({...prev, [name]: value}))
-  }
+// handle form submission//
 
   function handleSubmit(e){
     e.preventDefault()
