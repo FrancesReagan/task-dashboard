@@ -86,7 +86,35 @@ return (
           <span>{priorityStyle.icon}</span>
           <span className="font-medium">{task.priority}</span>   
         </div>
+        <div classNaem={`flex items-center gap-1 px-2 py-1 rounded-full text-xs
+             ${statusStyle.bg} ${statusStyle.color}`}>
+              <span>{statusStyle.icon}</span>
+              <span className="font-medium">{task.status}</span>
+       </div>
+      </div>
+    {/* {/* Created Date */}
+    {task.createdAt && (
+      <div className="text-xs opacity-60 mt-2">
+        Created:{formatedDate(task.createdAt)} 
+      </div>
+    )}
 
+  {/* {/* expanded/collapse for long descriptions */}
+  {task.description && task.description.length >100 && (
+    <button onClick={() => setIsExpanded(!isExpanded)}
+            className="text-blue-600 hover: text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 text-sm mt-1 transition-colors"
+            >
+        {isExpanded ? "Show less" : "Show more"}
+        </button>
+       )}
+    </div>
+
+    {/* {/* action buttons */}
+    <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+    
+    {/* {/* toggle status */}
+    
+  
  
 
 
