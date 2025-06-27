@@ -80,11 +80,53 @@ _Managing Tasks_
 
 
 _Dashboard Features_
+
  -Statistics: view real-time counts of total, pending, in-progress, completed, and overdue tasks.
  
  -Theme Toggle: you can switch between light and dark modes.
  
  -Export: you can download all tasks as a JSON file for backup or sharing (as previously stated above)
+-------------------------------------------------------
+
+__Sources and Resources_
+Core Technologies
+•	React Documentation - Official React documentation and guides
+•	React Hooks Reference - Complete hooks API reference
+•	Tailwind CSS Documentation - Utility-first CSS framework docs
+•	Vite Documentation - Next generation frontend tooling
+
+JavaScript & Web APIs
+•	MDN Web Docs - JavaScript - Comprehensive JavaScript reference
+•	localStorage API - Browser storage documentation
+•	Date API - JavaScript Date object reference
+•	FormData API - Form data handling
+
+React Patterns & Best Practices
+•	React Patterns - Common React component patterns
+•	React Hook Patterns - Advanced hook usage patterns
+•	Component Composition - React composition patterns
+•	Lifting State Up - State management strategies
+
+CSS & Styling
+•	Tailwind CSS Components - Pre-built component examples
+•	CSS Grid Guide - Complete guide to CSS Grid
+•	Flexbox Guide - Complete guide to Flexbox
+•	Dark Mode with Tailwind - Dark mode implementation
+
+Performance & Optimization
+•	React Performance - React rendering optimization
+•	useMemo vs useCallback - When and how to use memoization
+•	Web Vitals - Core web performance metrics
+
+Development Tools
+•	React Developer Tools - Browser extension for React debugging
+•	Vite Config Reference - Vite configuration options
+•	ESLint React Rules - React-specific ESLint rules
+
+Testing (Future Implementation)
+•	React Testing Library - Simple and complete React DOM testing utilities
+•	Jest Documentation - JavaScript testing framework
+•	Vitest - Vite-native testing framework
 
  
 
