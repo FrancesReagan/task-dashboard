@@ -208,10 +208,41 @@ const handleAddTask = useCallback((taskData) => {
                          >
                           📤 Export
                          </button>
+                         <label className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors duration-200 cursor-pointer text-sm">
+                          📥 Import
+                          <input
+                          type="file"
+                          accept=".json"
+                          onChange={handleImportTasks}
+                         </label>
+        </div>
       </div>
+    // statistics//
+     <div className={`grid grid-cols-2 sm:grid-cols-5 gap-4 mb-6 p-4 rounded-lg${
+      theme ==="dark"?"bg-gray-800": "bg-white shadow-sm"
+     }`}>
+      <div className="text-center">
+        <div className="text-2xl font-bold text-blue-600">{taskStats.total}</div>
+        <div className="text-sm opacity-75">Total</div> 
       </div>
-    </div>
-    </div>
+
+      <div className="text-center">
+          <div className="text-2xl font-bold text-yellow-600">{taskStats.pending}</div>
+         <div className="text-sm opacity-75">Pending</div>
+        </div>
+        <div className="text-center">
+          <div className="text-2xl font-bold text-orange-600">{taskStats.inProgress}</div>
+          <div className="text-sm opacity-75">In Progress</div>
+        </div>
+        <div className="text-center">
+              <div className="text-2xl font-bold text-green-600">{taskStats.completed}</div>
+              <div className="text-sm opacity-75">Completed</div>
+        </div>
+        <div className="text-center">
+          <div className="text-2xl font-bold text-red-600">{taskStats.overdue}</div>
+          <div className="text-sm opacity-75">Overdue</div>
+        </div>
+      </div>
   )
 
 
