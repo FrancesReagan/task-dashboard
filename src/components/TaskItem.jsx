@@ -72,13 +72,22 @@ return (
     </p>
 )}
 
-     
+    {/* {/* task meta info */}
+    <div className="flex flex-wrap gap-3 text-sm">
+      <div className="flex items-center gap-1">
+        <span>📅</span>
+        <span className={overdue ? "text-red-600 dark:text-red-400 font-medium": ""}>
+          Due:{formatDate(task.dueDate)}
+       </span>
+    </div>
 
+    <div className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs
+         ${priorityStyle.bg}${priorityStyle.color}`}>
+          <span>{priorityStyle.icon}</span>
+          <span className="font-medium">{task.priority}</span>   
+        </div>
 
-
-
-  }
-)
+ 
 
 
 
