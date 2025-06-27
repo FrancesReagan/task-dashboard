@@ -112,29 +112,37 @@ return (
     {/* {/* action buttons */}
     <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
     
-    {/* {/* toggle status */}
-    
+     {/* toggle status button */}
+    <button onClick={() => onToggleCompleted(task.id)}
+    className={` p-2 rounded-lg transition-colors text-sm ${
+      task.status === "completed" ? "bg-yellow-100 hover: bg-yellow-200 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300"
+      : "bg-green-100 hover:bg-green-200 text-green-800 dark:bg-green-900/30 dark:text-green-300"
+    }`}
+    title={task.status === "completed" ? "Mark as pending" : "Mark as completed"}
+    >
+      {task.status==="completed"?"↶" : "✓"}
+    </button>
   
- 
+ {/*   edit button */}
+ <button onClick={() => onEdit(task)}
+      className="p-2 rounded-lg bg-blue-100 hover:bg-blue-200 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 transition-colors"
+        title="Edit task"
+        >
+          ✏️
+ </button>               
 
-
-
+   {/* {/delete button */}
+   <button onClick{() => onDelete(task.id)}
+    className="p-2 rounded-lg bg-red-100 hover:bg-red-200 text-red-800 dark:bg-red-900/30 dark:text-red-300 transition-colors"
+    title="Delete task"
+    >
+      🗑️
+  </button>
+</div>
+</div>
+</div>
+</div>
+);
 }
-
-
-  }
-//   return (
-//     <>
-//     <h1>{task.title}</h1>
-//     <h2>{task.dueDate}</h2>
-//     <h2>{task.priority}</h2>
-//     <h3>{task.status}</h3>
-//     <button onClick={() toggleCompleted } 
-//     <button onClick={() => onDelete(task.id)}>Delete</button>
-
-    
-//     </>
-//   )
-// }
 
 export default TaskItem
